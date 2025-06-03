@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infographic: The Indian Healthcare Sector</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&amp;display=swap" rel="stylesheet">
+<style>
+body {
+font-family: 'Inter', sans-serif;
+background-color: #f0f4f8;
+}
+.chart-container {
+position: relative;
+width: 100%;
+max-width: 600px;
+margin-left: auto;
+margin-right: auto;
+height: 320px;
+max-height: 400px;
+}
+@media (min-width: 768px) {
+.chart-container {
+height: 350px;
+}
+}
+.flowchart-node {
+border: 2px solid #087E8B;
+background-color: #ffffff;
+color: #0B3954;
+padding: 1rem;
+border-radius: 0.5rem;
+text-align: center;
+font-weight: 600;
+box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+.flowchart-arrow {
+color: #087E8B;
+font-size: 2rem;
+font-weight: bold;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.stat-card {
+background-color: white;
+border-radius: 0.75rem;
+padding: 1.5rem;
+box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.stat-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+</style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+
+<div class="container mx-auto p-4 md:p-8">
+
+    <header class="text-center mb-12">
+        <h1 class="text-4xl md:text-6xl font-black text-[#0B3954] mb-2">The Anatomy of Indian Healthcare</h1>
+        <p class="text-lg md:text-xl text-[#087E8B] font-semibold">A Deep Dive into a Sector in Transformation</p>
+    </header>
+
+    <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <section class="stat-card md:col-span-2 lg:col-span-3">
+            <h2 class="text-2xl font-bold text-[#0B3954] mb-4 text-center">Market at a Glance: A Sector of Scale</h2>
+            <p class="text-center text-slate-600 mb-8 max-w-4xl mx-auto">
+                India's healthcare sector is not just growing; it's exploding. Fueled by a massive population, rising incomes, and significant investment, the industry is on a trajectory to become a global healthcare powerhouse. This rapid expansion presents immense opportunities alongside significant challenges in delivering equitable care.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-[#BFD7EA] p-6 rounded-lg">
+                    <p class="text-5xl font-black text-[#0B3954]">$638B</p>
+                    <p class="text-lg font-semibold text-[#087E8B]">Projected Market Size by 2025</p>
+                </div>
+                <div class="bg-[#BFD7EA] p-6 rounded-lg">
+                    <p class="text-5xl font-black text-[#0B3954]">22.5%</p>
+                    <p class="text-lg font-semibold text-[#087E8B]">Compound Annual Growth Rate</p>
+                </div>
+                <div class="stat-card p-6 border-2 border-[#BFD7EA]">
+                    <h3 class="text-xl font-bold text-[#0B3954] mb-3">Insurance Coverage Gap</h3>
+                    <p class="text-slate-600 mb-4">Despite progress, a significant portion of the population remains without financial protection against health shocks.</p>
+                    <div class="chart-container h-48 md:h-56">
+                        <canvas id="insurancePenetrationChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="stat-card md:col-span-2 lg:col-span-3">
+            <h2 class="text-2xl font-bold text-[#0B3954] mb-4 text-center">The Dual System: Public vs. Private Infrastructure</h2>
+            <p class="text-center text-slate-600 mb-8 max-w-4xl mx-auto">
+                India's healthcare delivery is characterized by a two-speed system. The public sector aims for broad, affordable access, while the private sector drives capacity and technology, commanding a majority of the nation's critical healthcare infrastructure. This chart visualizes the stark quantitative dominance of the private sector.
+            </p>
+            <div class="chart-container h-96">
+                <canvas id="infrastructureChart"></canvas>
+            </div>
+        </section>
+        
+        <section class="stat-card md:col-span-2 lg:col-span-3">
+            <h2 class="text-2xl font-bold text-[#0B3954] mb-4 text-center">The Healthcare Delivery Structure</h2>
+             <p class="text-center text-slate-600 mb-8 max-w-4xl mx-auto">
+                The system is organized in a tiered structure to manage patient flow from basic local care to highly specialized treatments. This model is designed to provide comprehensive care, starting from community-level health promotion to advanced surgical interventions in metropolitan centers.
+            </p>
+            <div class="flex flex-col md:flex-row items-center justify-around w-full gap-4">
+                <div class="flowchart-node w-full md:w-1/4">
+                    <h3 class="text-lg">Primary Care</h3>
+                    <p class="font-normal text-sm mt-1">Sub-Centres (SCs) & Primary Health Centers (PHCs). First point of contact for basic health, immunization, and maternal care.</p>
+                </div>
+                <div class="flowchart-arrow transform md:-rotate-0">→</div>
+                <div class="flowchart-node w-full md:w-1/4">
+                    <h3 class="text-lg">Secondary Care</h3>
+                    <p class="font-normal text-sm mt-1">Community Health Centers (CHCs) & District Hospitals. Referrals from primary care for more specialized services.</p>
+                </div>
+                <div class="flowchart-arrow transform md:-rotate-0">→</div>
+                 <div class="flowchart-node w-full md:w-1/4">
+                    <h3 class="text-lg">Tertiary Care</h3>
+                    <p class="font-normal text-sm mt-1">Super-Specialty & Teaching Hospitals. Highest level for complex procedures like cancer treatment and organ transplants.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="stat-card md:col-span-2">
+            <h2 class="text-2xl font-bold text-[#0B3954] mb-2">The Shifting Funding Landscape</h2>
+            <p class="text-slate-600 mb-6">Government spending on health is steadily rising, leading to a welcome decline in the burden of out-of-pocket payments by citizens. This trend signifies a crucial move towards greater financial protection and universal health coverage, though the journey is far from over.</p>
+            <div class="chart-container h-80">
+                <canvas id="fundingTrendsChart"></canvas>
+            </div>
+        </section>
+
+        <section class="stat-card">
+            <h2 class="text-2xl font-bold text-[#0B3954] mb-2">Out-of-Pocket Burden</h2>
+             <p class="text-slate-600 mb-6">While decreasing, India's out-of-pocket expenditure remains significantly higher than the global average and that of many major economies, highlighting a persistent challenge in healthcare affordability for the average family.</p>
+            <div class="chart-container h-80">
+                <canvas id="oopeComparisonChart"></canvas>
+            </div>
+        </section>
+
+        <section class="stat-card md:col-span-2 lg:col-span-3">
+            <h2 class="text-2xl font-bold text-[#0B3954] mb-4 text-center">The Great Divide: Urban vs. Rural Access</h2>
+            <p class="text-center text-slate-600 mb-8 max-w-4xl mx-auto">
+                One of the most profound challenges is the geographical disparity in healthcare access. Quality care is heavily concentrated in cities, leaving the majority of the population in rural areas underserved, with inadequate facilities and a critical shortage of medical professionals.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
+                <div class="bg-[#087E8B] text-white p-6 rounded-lg">
+                    <p class="text-6xl font-black">60% <span class="text-4xl">vs</span> 37%</p>
+                    <p class="text-lg font-semibold mt-2">Over 60% of the population lives in rural areas, but only 37% of hospital beds are located there.</p>
+                </div>
+                <div class="bg-[#FF5A5F] text-white p-6 rounded-lg">
+                    <p class="text-6xl font-black">1:25,000</p>
+                    <p class="text-lg font-semibold mt-2">The doctor-to-patient ratio in rural India, far below the WHO recommendation of 1:1,000.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="stat-card">
+             <h2 class="text-2xl font-bold text-[#0B3954] mb-4">Pharma Powerhouse</h2>
+             <p class="text-slate-600 mb-4">India is the world's largest supplier of generic drugs, playing a pivotal role in global medicine accessibility. This sector is a cornerstone of the healthcare economy.</p>
+             <div class="text-center bg-[#BFD7EA] p-4 rounded-lg">
+                <p class="text-4xl font-black text-[#0B3954]">$100B</p>
+                <p class="font-semibold text-[#087E8B]">Projected Market by 2025</p>
+             </div>
+        </section>
+
+        <section class="stat-card">
+             <h2 class="text-2xl font-bold text-[#0B3954] mb-4">MedTech on the Rise</h2>
+             <p class="text-slate-600 mb-4">The domestic medical device market is rapidly expanding, driven by innovation and government initiatives to foster self-reliance and reduce import dependency.</p>
+             <div class="text-center bg-[#BFD7EA] p-4 rounded-lg">
+                <p class="text-4xl font-black text-[#0B3954]">$50B</p>
+                <p class="font-semibold text-[#087E8B]">Projected Market by 2025</p>
+             </div>
+        </section>
+
+         <section class="stat-card">
+             <h2 class="text-2xl font-bold text-[#0B3954] mb-4">Medical Tourism Hub</h2>
+             <p class="text-slate-600 mb-4">Combining high-quality care with costs up to 80% lower than in developed nations, India is a premier destination for international patients seeking treatment.</p>
+             <div class="text-center bg-[#BFD7EA] p-4 rounded-lg">
+                <p class="text-4xl font-black text-[#0B3954]">15%</p>
+                <p class="font-semibold text-[#087E8B]">Annual Growth Rate</p>
+             </div>
+        </section>
+        
+        <section class="stat-card md:col-span-2">
+            <h2 class="text-2xl font-bold text-[#0B3954] mb-4">The Digital Revolution</h2>
+            <p class="text-slate-600 mb-6">Technology is poised to bridge many of India's healthcare gaps. Digital health, led by a boom in telemedicine, is transforming access to care, while Artificial Intelligence is making diagnostics faster and more accurate across the country.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold text-[#0B3954] mb-3 text-center">Tele-Healthcare Dominance</h3>
+                    <div class="chart-container h-64">
+                        <canvas id="digitalHealthChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-[#087E8B] text-white p-6 rounded-lg flex flex-col items-center justify-center text-center">
+                    <p class="text-6xl font-black">>40%</p>
+                    <p class="text-lg font-semibold mt-2">AI adoption rate in Indian healthcare, outpacing many other major sectors.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="stat-card">
+            <h2 class="text-2xl font-bold text-[#0B3954] mb-4">The Path Forward: Bridging the Gap</h2>
+            <p class="text-slate-600 mb-6">To meet the needs of its growing and aging population, India must urgently scale its healthcare workforce and infrastructure. The current deficits represent a major hurdle to achieving universal health coverage.</p>
+            <ul class="space-y-4">
+                <li class="flex items-center">
+                    <span class="text-3xl text-[#FF5A5F] mr-4">⚠️</span>
+                    <div>
+                        <p class="text-2xl font-bold text-[#0B3954]">3 Million</p>
+                        <p class="text-slate-600">Additional Beds Needed by 2025</p>
+                    </div>
+                </li>
+                <li class="flex items-center">
+                    <span class="text-3xl text-[#FF5A5F] mr-4">⚠️</span>
+                     <div>
+                        <p class="text-2xl font-bold text-[#0B3954]">1.54 Million</p>
+                        <p class="text-slate-600">Additional Doctors Needed</p>
+                    </div>
+                </li>
+                <li class="flex items-center">
+                    <span class="text-3xl text-[#FF5A5F] mr-4">⚠️</span>
+                     <div>
+                        <p class="text-2xl font-bold text-[#0B3954]">2.4 Million</p>
+                        <p class="text-slate-600">Additional Nurses Needed</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+    </main>
+    
+    <footer class="text-center mt-12 pt-8 border-t border-slate-300">
+        <p class="text-slate-500">Data synthesized from the "Indian Healthcare Sector Analysis" report. Visualizations are for illustrative purposes.</p>
+    </footer>
+
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const wrapLabel = (label, maxLength = 16) => {
+        if (typeof label !== 'string' || label.length <= maxLength) {
+            return label;
+        }
+        const words = label.split(' ');
+        const lines = [];
+        let currentLine = '';
+        words.forEach(word => {
+            if ((currentLine + ' ' + word).trim().length > maxLength) {
+                lines.push(currentLine.trim());
+                currentLine = word;
+            } else {
+                currentLine = (currentLine + ' ' + word).trim();
+            }
+        });
+        if (currentLine) {
+            lines.push(currentLine.trim());
+        }
+        return lines;
+    };
+    
+    const defaultChartOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: 'bottom',
+                labels: {
+                    color: '#0B3954',
+                    font: {
+                        family: "'Inter', sans-serif",
+                    }
+                }
+            },
+            tooltip: {
+                enabled: true,
+                backgroundColor: '#0B3954',
+                titleFont: { size: 14, weight: 'bold', family: "'Inter', sans-serif" },
+                bodyFont: { size: 12, family: "'Inter', sans-serif" },
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const item = tooltipItems[0];
+                        let label = item.chart.data.labels[item.dataIndex];
+                        if (Array.isArray(label)) {
+                          return label.join(' ');
+                        }
+                        return label;
+                    }
+                }
+            }
+        },
+        scales: {
+            y: {
+                ticks: { color: '#087E8B', font: { family: "'Inter', sans-serif" } },
+                grid: { color: '#e2e8f0' }
+            },
+            x: {
+                ticks: { color: '#087E8B', font: { family: "'Inter', sans-serif" } },
+                grid: { display: false }
+            }
+        }
+    };
+
+    const colors = {
+        darkBlue: '#0B3954',
+        mediumBlue: '#087E8B',
+        lightBlue: '#BFD7EA',
+        accentRed: '#FF5A5F',
+        neutralGray: '#C1D7E8'
+    };
+
+    const insuranceCtx = document.getElementById('insurancePenetrationChart')?.getContext('2d');
+    if (insuranceCtx) {
+        new Chart(insuranceCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Covered (37%)', 'Not Covered (63%)'],
+                datasets: [{
+                    data: [37, 63],
+                    backgroundColor: [colors.mediumBlue, colors.lightBlue],
+                    borderColor: '#ffffff',
+                    borderWidth: 2
+                }]
+            },
+            options: { ...defaultChartOptions, cutout: '60%' }
+        });
+    }
+    
+    const infrastructureCtx = document.getElementById('infrastructureChart')?.getContext('2d');
+    if (infrastructureCtx) {
+        new Chart(infrastructureCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Total Hospitals', ['Hospital Beds', '(in millions)'], 'ICU Beds', 'Ventilators'],
+                datasets: [{
+                    label: 'Private Sector',
+                    data: [43487, 1.18, 59264, 29631],
+                    backgroundColor: colors.darkBlue,
+                    borderColor: colors.darkBlue,
+                    borderWidth: 1
+                }, {
+                    label: 'Public Sector',
+                    data: [25778, 0.71, 35700, 17850],
+                    backgroundColor: colors.mediumBlue,
+                    borderColor: colors.mediumBlue,
+                    borderWidth: 1
+                }]
+            },
+            options: defaultChartOptions
+        });
+    }
+
+    const fundingTrendsCtx = document.getElementById('fundingTrendsChart')?.getContext('2d');
+    if (fundingTrendsCtx) {
+        new Chart(fundingTrendsCtx, {
+            type: 'line',
+            data: {
+                labels: ['2014-15', '2021-22'],
+                datasets: [{
+                    label: 'Govt. Health Expenditure (% of GDP)',
+                    data: [1.13, 1.84],
+                    borderColor: colors.mediumBlue,
+                    backgroundColor: 'rgba(8, 126, 139, 0.1)',
+                    fill: true,
+                    tension: 0.1
+                }, {
+                    label: 'Out-of-Pocket Expenditure (% of THE)',
+                    data: [62.6, 39.4],
+                    borderColor: colors.accentRed,
+                    backgroundColor: 'rgba(255, 90, 95, 0.1)',
+                    fill: true,
+                    tension: 0.1
+                }]
+            },
+            options: {...defaultChartOptions, scales: { ...defaultChartOptions.scales, y: {...defaultChartOptions.scales.y, ticks: {...defaultChartOptions.scales.y.ticks, callback: value => value + '%' }}}}
+        });
+    }
+    
+    const oopeComparisonCtx = document.getElementById('oopeComparisonChart')?.getContext('2d');
+    if (oopeComparisonCtx) {
+        new Chart(oopeComparisonCtx, {
+            type: 'bar',
+            data: {
+                labels: ['India', 'China', 'United Kingdom', 'USA', 'Japan', 'Global Average'],
+                datasets: [{
+                    label: 'Out-of-Pocket Expenditure (% of Current Health Spend)',
+                    data: [39.4, 35.2, 17.1, 11.3, 12.9, 18.1],
+                    backgroundColor: ['#FF5A5F', '#0B3954', '#0B3954', '#0B3954', '#0B3954', '#087E8B'],
+                }]
+            },
+            options: {
+               // ...defaultChartOptions,
+                indexAxis: 'y',
+                plugins: {
+                    ...defaultChartOptions.plugins,
+                    legend: { display: false }
+                }
+            }
+        });
+    }
+
+    const digitalHealthCtx = document.getElementById('digitalHealthChart')?.getContext('2d');
+    if (digitalHealthCtx) {
+        new Chart(digitalHealthCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Tele-Healthcare (58%)', 'Other Digital Health'],
+                datasets: [{
+                    data: [58.31, 41.69],
+                    backgroundColor: [colors.darkBlue, colors.lightBlue],
+                    borderColor: '#ffffff',
+                    borderWidth: 2
+                }]
+            },
+            options: { ...defaultChartOptions, plugins: {...defaultChartOptions.plugins, legend: { position: 'top' }}}
+        });
+    }
+});
+</script>
